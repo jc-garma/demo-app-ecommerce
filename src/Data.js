@@ -63,7 +63,7 @@ const data = {
     },
     {
       id: 7,
-      title: "Nike Air Max 2 Light Atmos",
+      title: "Nike Air Max 2 Light Atmos (2019)",
       price: 360,
       image: require('./images/img07.jpg'),
       category: "nike",
