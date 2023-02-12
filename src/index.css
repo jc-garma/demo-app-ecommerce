@@ -400,7 +400,19 @@ header .cart span {
   font-size: 1.4rem;
   color:#30333a;
 }
+.relacionado{
+  text-align: center;
+  background: #2e2e2e;
+  color: white;
+  max-width: 350px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  font-size: 18px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 
+}
 /*============================MEDIA============================*/
 @media only screen and (max-width: 1000px){
   .carrito__item {

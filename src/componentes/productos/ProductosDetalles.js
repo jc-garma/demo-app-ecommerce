@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../context/DataProvider";
 import { useParams } from "react-router-dom";
+import { ProductoItem } from "./ProductoItem";
 
 export const ProductosDetalles = () => {
   const value = useContext(DataContext); // manegador de variables globales( otra opción react redux)
@@ -11,6 +12,7 @@ export const ProductosDetalles = () => {
   const addCarrito = value.addCarrito;
 
   const params = useParams();
+  let item = 0;
   /*const { id } = useParams();
 
   const navegar = useNavigate();
@@ -28,6 +30,7 @@ export const ProductosDetalles = () => {
 
   useEffect(() => {
     productos.forEach((producto) => {
+      item = 0;
       if (producto.id === parseInt(params.id)) {
         setDetalle(producto);
         setUrl(0); // Por defecto no existe url 0, con la ternaria obtengo image
@@ -77,7 +80,9 @@ export const ProductosDetalles = () => {
               <p>Tamaño</p>
             </div>
           </div>
-          <button onClick={() => addCarrito(detalle.id) }>Añadir al carrito</button>
+          <button onClick={() => addCarrito(detalle.id)}>
+            Añadir al carrito
+          </button>
           {url ? (
             <img
               //src="https://stockx-360.imgix.net/Nike-LD-Waffle-Sacai-White-Nylon/Images/Nike-LD-Waffle-Sacai-White-Nylon/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1606325338&w=1000"
@@ -115,6 +120,25 @@ export const ProductosDetalles = () => {
           <br />
         </div>
       }
+      <h2 className="relacionado">Productos Relacionados</h2>
+      <div className="productos">
+        {productos.map((producto) => {
+          if ((item < 6)&&(detalle.category === producto.category)) {
+            item++;
+            return <ProductoItem
+              key={producto.id}
+              id={producto.id}
+              title={producto.title}
+              price={producto.price}
+              image={producto.image}
+              category={producto.category}
+              img1={producto.img1}
+              img2={producto.img2}
+              cantidad={producto.cantidad}
+            />;
+          }
+        })}
+      </div>
     </>
   );
 };
